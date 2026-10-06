@@ -95,7 +95,7 @@ Construisez dans `EscapeGame_TP` **deux salles thématiques** (exemple : un donj
 - **Murs et sols** : les modèles Kenney ont déjà des colliders. Le joueur ne peut pas les traverser.
 - **Attraper un objet** : `Add Component` → `XR Grab Interactable` (un Rigidbody est ajouté automatiquement). Ajoutez aussi `Hover Outline` pour le contour.
   - Cochez **Convex** sur ses `Mesh Collider` : ils sont souvent sur les **enfants** du modèle, dépliez-le dans la Hierarchy.
-  - Un objet que l'on attrape ne doit **pas** être Static.
+  - Un objet que l'on attrape ne doit **pas** être `Contribute GI` (voir étape 5).
 
 ## Étape 4 : Deux énigmes différentes
 
@@ -115,9 +115,10 @@ Idées d'énigmes (sans prefab fourni). Pour chacune, partez de `SimpleButtonPuz
 
 En VR sur un casque autonome, l'éclairage doit être **précalculé** (baked) : c'est beaucoup plus léger que des ombres en temps réel.
 
-1. **Décor fixe** : sélectionnez les murs, sols et meubles qui ne bougent pas, et cochez **Static** en haut de l'Inspector.
+1. **Décor fixe** : sélectionnez les murs, sols et meubles qui ne bougent pas. En haut de l'Inspector, cliquez sur la **petite flèche à côté de Static** et cochez **uniquement `Contribute GI`**.
+   - Ne cochez **pas** la case Static entière : elle active aussi le `Batching Static`, qui casse le tile-based rendering du Quest et fait chuter les performances en VR.
    - Les murs, sols et portes reçoivent leur lumière d'une **lightmap** (une texture d'éclairage précalculée).
-   - Les petits objets (meubles, accessoires) la reçoivent des **probes** : c'est réglé automatiquement à l'import (`Receive Global Illumination` = `Light Probes`). Ils sont trop petits pour une lightmap propre.
+   - Les petits objets (meubles, accessoires) la reçoivent des **probes** : c'est réglé automatiquement à l'import (`Receive Global Illumination` = `Light Probes`). Ils sont trop petits pour une lightmap propre. Cochez-leur quand même `Contribute GI`.
 2. **Lumières** : sur chaque lumière, `Mode` = **Baked**.
 3. **Probes** : la scène contient déjà un `Adaptive Probe Volume` (mode `Scene`). Il éclaire les objets qui bougent (clé, objets attrapés).
 4. **Calcul** : `Window` → `Rendering` → `Lighting` → `Generate Lighting`.
@@ -189,7 +190,7 @@ Enregistrez une vidéo de votre niveau du début à la fin, **depuis le casque**
 
 ### L'éclairage calculé est bizarre (murs noirs, taches)
 
-- Le décor est-il bien **Static** ? Les lumières sont-elles en `Mode` **Baked** ?
+- Le décor est-il bien en **`Contribute GI`** (flèche à côté de Static) ? Les lumières sont-elles en `Mode` **Baked** ?
 - Dans `Window` → `Rendering` → `Lighting`, gardez `Lightmapper` = **Progressive CPU** : sur certains ordinateurs (Mac notamment), le mode GPU donne des murs noirs ou des taches.
 - Relancez `Generate Lighting` après avoir modifié le décor.
 

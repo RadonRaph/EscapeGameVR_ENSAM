@@ -297,11 +297,11 @@ public static class EscapeGameSceneBuilder
         return Prefab(path, parent, position, angle);
     }
 
-    // Décor fixe : participe au lighting baked
+    // Décor fixe : participe au lighting baked (Contribute GI uniquement).
+    // Pas de Batching Static : en VR, le static batching casse le tile-based rendering du Quest.
     static GameObject Static(GameObject target)
     {
-        StaticEditorFlags flags = StaticEditorFlags.ContributeGI | StaticEditorFlags.BatchingStatic
-            | StaticEditorFlags.OccluderStatic | StaticEditorFlags.OccludeeStatic | StaticEditorFlags.ReflectionProbeStatic;
+        StaticEditorFlags flags = StaticEditorFlags.ContributeGI;
         Transform[] all = target.GetComponentsInChildren<Transform>();
         for (int i = 0; i < all.Length; i++)
         {
