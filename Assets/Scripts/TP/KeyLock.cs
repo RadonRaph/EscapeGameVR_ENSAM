@@ -30,6 +30,15 @@ public class KeyLock : MonoBehaviour
         //          Astuce : "différent de" s'écrit !=   ->   if (key.name != keyName) { ... }
         //          return; arrête la fonction tout de suite : le code en dessous n'est pas exécuté.
 
+                if (key.name != keyName)
+        {
+            Debug.Log("Ce n'est pas la bonne clé");
+            return;
+        }
+
+        Debug.Log("Bonne clé : ouverture de la porte");
+        onSolved.Invoke();
+
         // TODO 2 : si on arrive ici, c'est la bonne clé : déclencher l'événement onSolved.
         //          Astuce : onSolved.Invoke();
         //          Bonus : afficher aussi un message de réussite avec Debug.Log

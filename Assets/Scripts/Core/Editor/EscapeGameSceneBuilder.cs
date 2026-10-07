@@ -387,7 +387,7 @@ public static class EscapeGameSceneBuilder
         light.shadows = LightShadows.Soft;
         light.lightmapBakeType = LightmapBakeType.Baked;
         // Ombres précalculées douces : évite les ombres dures en escalier sur les murs
-        light.shadowRadius = 0.5f;
+        light.shapeRadius = 0.5f;
     }
 
     static void Label(Transform parent, string text, Vector3 position, float angle, float height)

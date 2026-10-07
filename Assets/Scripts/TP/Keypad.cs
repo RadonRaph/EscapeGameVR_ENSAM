@@ -31,17 +31,36 @@ public class Keypad : MonoBehaviour
         // TODO 1 : si key vaut "C", vider typed.
         //          Astuce : on compare deux textes avec ==   ->   if (key == "C") { ... }
         //          Vider un texte : typed = "";
-
+        if (key == "C")
+        {
+            typed = "";
+        }
         // TODO 2 : sinon, si key vaut "OK", comparer typed avec code :
         //          - si c'est le bon code : déclencher l'événement onSolved avec onSolved.Invoke();
         //          - sinon : vider typed (le joueur recommence)
         //          Astuce : pour enchaîner les cas -> if (...) { ... } else if (...) { ... } else { ... }
         //          Un if peut être écrit dans un autre if.
-
+        else if (key == "OK")
+            {
+                if (typed == code)
+                {
+                    Debug.Log("Bon code : ouverture de la porte");
+                    onSolved.Invoke();
+                }
+                else
+                {
+                    Debug.Log("Code incorrect");
+                    typed = "";
+                }
+            }
         // TODO 3 : sinon (c'est un chiffre), ajouter key à la fin de typed.
         //          Astuce : on colle deux textes avec +   ->   typed = typed + key;
-
+        else
+            {
+                typed = typed + key;
+            }
         // TODO 4 : afficher typed sur l'écran du keypad (APRÈS les if, pour tous les cas).
         //          Astuce : le texte affiché est dans la propriété text   ->   display.text = ...;
+        display.text = typed;
     }
 }
