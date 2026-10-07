@@ -25,29 +25,7 @@ public class KeyLock : MonoBehaviour
         GameObject key = args.interactableObject.transform.gameObject;
         Debug.Log("Objet posé dans la serrure : " + key.name);
 
-        //todo1
-        if (key == "C")
-        {
-            typed = "";
-            //todo2
-        }
-        else if (key == "OK")
-        {
-            if (typed == code)
-            {
-                onSolved.Invoke();
-            }
-            else
-            {
-                typed = "";
-            }
-        }
-        else
-        {
-            typed = typed + key;
-        }
-
-        display.text = typed;
+    
 
 
         // TODO 1 : si le nom de l'objet (key.name) est différent de keyName :
