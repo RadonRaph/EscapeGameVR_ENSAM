@@ -37,17 +37,18 @@ public class Keypad : MonoBehaviour
                 display.text = "";
                 break;
             case "OK":
-                if (code == key)
+                if (display.text == code)
                 {
-
                     display.text = "Code Valider";
                     onSolved.Invoke();
+                    Debug.Log("CODE-BON");
                 }
                 break;
             default:
                 display.text += key;
                 break;
         }
+        Debug.Log("===" + display.text);
 
         // TODO 1 : si key vaut "C", vider typed.
         //          Astuce : on compare deux textes avec ==   ->   if (key == "C") { ... }
