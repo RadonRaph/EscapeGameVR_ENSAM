@@ -28,6 +28,30 @@ public class Keypad : MonoBehaviour
     {
         Debug.Log("Touche : " + key);
 
+        //todo1
+        if (key == "C")
+        {
+            typed = "";
+            //todo2
+        }
+        else if (key == "OK")
+        {
+            if (typed == code)
+            {
+                onSolved.Invoke();
+            }
+            else
+            {
+                typed = "";
+            }
+        }
+        else
+        {
+            typed = typed + key;
+        }
+
+        display.text = typed;
+
         // TODO 1 : si key vaut "C", vider typed.
         //          Astuce : on compare deux textes avec ==   ->   if (key == "C") { ... }
         //          Vider un texte : typed = "";
@@ -45,3 +69,4 @@ public class Keypad : MonoBehaviour
         //          Astuce : le texte affiché est dans la propriété text   ->   display.text = ...;
     }
 }
+
