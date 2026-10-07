@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PorteAnimee : MonoBehaviour
+public class DeplacementAnime : MonoBehaviour
 {
 
     public float vitesseDescente;
