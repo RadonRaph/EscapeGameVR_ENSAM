@@ -23,10 +23,31 @@ public class Keypad : MonoBehaviour
     // Les chiffres tapés par le joueur
     string typed = "";
 
+
     // key vaut "0" à "9", "C" (effacer) ou "OK" (valider)
     public void PressKey(string key)
     {
         Debug.Log("Touche : " + key);
+        
+
+        //T1
+        switch (key)
+        {
+            case "C":
+                display.text = "";
+                break;
+            case "OK":
+                if (code == key)
+                {
+
+                    display.text = "Code Valider";
+                    onSolved.Invoke();
+                }
+                break;
+            default:
+                display.text += key;
+                break;
+        }
 
         // TODO 1 : si key vaut "C", vider typed.
         //          Astuce : on compare deux textes avec ==   ->   if (key == "C") { ... }
