@@ -323,10 +323,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4622673660791436734, guid: 4b55bfbb897d943b695f0d00400251c0, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1594530019}
+    - target: {fileID: 4622673660791436734, guid: 4b55bfbb897d943b695f0d00400251c0, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnKeyInserted
+      objectReference: {fileID: 0}
+    - target: {fileID: 4622673660791436734, guid: 4b55bfbb897d943b695f0d00400251c0, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: KeyLockV2, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4622673660791436734, guid: 4b55bfbb897d943b695f0d00400251c0, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7716310699392327712, guid: 4b55bfbb897d943b695f0d00400251c0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1351361052014119959, guid: 4b55bfbb897d943b695f0d00400251c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1594530019}
   m_SourcePrefab: {fileID: 100100000, guid: 4b55bfbb897d943b695f0d00400251c0, type: 3}
 --- !u!1 &155150644 stripped
 GameObject:
@@ -2375,6 +2395,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 121a5abb6831e42b99c9312869671143, type: 3}
   m_PrefabInstance: {fileID: 1586259735}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1594530016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1351361052014119959, guid: 4b55bfbb897d943b695f0d00400251c0, type: 3}
+  m_PrefabInstance: {fileID: 134103457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1594530019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594530016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71b408a6de1d4b4087d26f0d53774cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeyLockV2
+  materiauAttendu: {fileID: 2100000, guid: b84152742b9521f4d85a1e3d40fd3a19, type: 2}
+  onSolved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1609369921 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 121a5abb6831e42b99c9312869671143, type: 3}
