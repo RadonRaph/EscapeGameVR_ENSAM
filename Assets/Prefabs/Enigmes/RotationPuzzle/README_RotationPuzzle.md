@@ -7,9 +7,9 @@ Trois molettes portent chacune les symboles A, B, C et D. Chaque appui fait tour
 | Objet | Rôle |
 |---|---|
 | `Molettes` | Le panneau. Script `RotationPuzzle` (à compléter). |
-| `Molette_0`, `Molette_1`, `Molette_2` | Les molettes, de gauche à droite. Script `RotatingDial`. |
+| `Molette_0`, `Molette_1`, `Molette_2` | Les molettes, de gauche à droite. Chacune a un `XR Simple Interactable` dont `Select Entered` appelle `RotationPuzzle.TurnDial` avec son numéro. |
 
-Chaque `RotatingDial` a un `Current Index` : le numéro du symbole en haut (0 = A, 1 = B, 2 = C, 3 = D). À chaque cran, la molette appelle `OnDialTurned()` sur le `RotationPuzzle`.
+Sélectionnez `Molette_1` : dans `XR Simple Interactable` → `Interactable Events` → `Select Entered`, vous voyez `RotationPuzzle.TurnDial` avec la valeur `1`.
 
 ## Installation
 
@@ -17,22 +17,22 @@ Chaque `RotatingDial` a un `Current Index` : le numéro du symbole en haut (0 = 
 2. Dans le script `RotationPuzzle` :
    - `Dials` : déjà rempli avec les 3 molettes.
    - `Solution` : le symbole attendu pour chaque molette (ex : `1, 3, 2` = B, D, C).
-   - `Door To Open` : glissez la porte à ouvrir.
+   - `On Solved` : `+`, glissez la `Grille` de la porte, `GameObject` → `SetActive`, case **décochée**.
 3. Cachez la solution dans la salle : trois tableaux avec une lettre, des livres de couleur...
 
 Pour tourner une molette : avec le **doigt** ou en visant avec le **rayon** puis gâchette.
 
 ## Le code à écrire
 
-Ouvrez `Scripts/TP/RotationPuzzle.cs`. La fonction `OnDialTurned()` doit vérifier si **toutes** les molettes sont sur le bon symbole.
+Ouvrez `Scripts/TP/RotationPuzzle.cs`. Le début de `TurnDial` (déjà écrit) tourne la molette et met à jour `current` : `current[i]` est le symbole en haut de la molette `i` (0 = A, 1 = B...). À vous de vérifier si **toutes** les molettes sont bonnes.
 
 | TODO | À faire |
 |---|---|
 | 1 | Une boucle `for` sur toutes les molettes : `for (int i = 0; i < dials.Length; i++) { }` |
-| 2 | Dans la boucle : si `dials[i].currentIndex` est différent de `solution[i]`, ce n'est pas bon : `return;` |
-| 3 | Après la boucle : toutes les molettes sont bonnes, `Solve();` |
+| 2 | Dans la boucle : si `current[i]` est différent de `solution[i]`, ce n'est pas bon : `return;` |
+| 3 | Après la boucle : toutes les molettes sont bonnes, `onSolved.Invoke();` |
 
-> **Astuce** : `dials[i]` est la molette numéro `i`, et `solution[i]` le symbole attendu pour elle. Les deux tableaux doivent avoir la même taille.
+> **Astuce** : `current[i]` est le symbole de la molette numéro `i`, et `solution[i]` le symbole attendu pour elle. Les deux tableaux ont la même taille.
 
 ## Tester
 
@@ -40,5 +40,5 @@ Scène `EscapeGame_Enigmes`, troisième énigme (solution `B D C`). Tournez les 
 
 ## Pour aller plus loin
 
-- Mettre 4 molettes, ou 6 symboles par molette (`Symbol Count`).
+- Ajouter une 4e molette : dupliquez une molette, changez la valeur de son `Select Entered` (3) et ajoutez-la à `Dials` et `Solution`.
 - Remplacer les lettres par des symboles ou des couleurs.

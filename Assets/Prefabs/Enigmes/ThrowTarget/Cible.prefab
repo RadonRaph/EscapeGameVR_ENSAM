@@ -161,13 +161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8755abd1217f46e3953c59019b2f22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThrowTarget
-  doorToOpen: {fileID: 0}
-  onSolved:
-    m_PersistentCalls:
-      m_Calls: []
   hitsNeeded: 3
   minSpeed: 2
   counter: {fileID: 1080159036353319502}
+  onSolved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3964217538045603112
 GameObject:
   m_ObjectHideFlags: 0

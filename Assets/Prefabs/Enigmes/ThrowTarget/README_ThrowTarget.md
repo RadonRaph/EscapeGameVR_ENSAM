@@ -7,7 +7,7 @@ Le joueur doit toucher une cible plusieurs fois en lançant des objets. Au bout 
 | Prefab | Rôle |
 |---|---|
 | `Cible` | La cible. Script `ThrowTarget` (à compléter). L'enfant `Compteur` affiche le nombre de touches. |
-| `Projectile` | Une balle à lancer. Scripts `XR Grab Interactable` et `Throwable` (seuls les objets `Throwable` comptent). |
+| `Projectile` | Une balle à lancer (`XR Grab Interactable`). |
 
 Pour lancer : attraper la balle, faire le geste du lancer et **lâcher** la gâchette pendant le mouvement.
 
@@ -18,7 +18,7 @@ Pour lancer : attraper la balle, faire le geste du lancer et **lâcher** la gâc
    - `Hits Needed` : le nombre de touches (3).
    - `Min Speed` : la vitesse minimum d'un lancer (2). Un objet simplement posé sur la cible ne compte pas.
    - `Counter` : déjà rempli avec le texte `Compteur`.
-   - `Door To Open` : glissez la porte à ouvrir.
+   - `On Solved` : `+`, glissez la `Grille` de la porte, `GameObject` → `SetActive`, case **décochée**.
 3. Glissez quelques `Projectile` sur une table. Si une balle tombe hors du niveau, elle revient à sa place (`Reset If Fallen`).
 
 ## Le code à écrire
@@ -27,10 +27,10 @@ Ouvrez `Scripts/TP/ThrowTarget.cs`. La fonction `OnCollisionEnter(Collision coll
 
 | TODO | À faire |
 |---|---|
-| 1 | Si l'objet n'a pas de script `Throwable` (`collision.gameObject.GetComponent<Throwable>() == null`) : `return;` |
+| 1 | Si l'objet n'a pas de Rigidbody (`collision.rigidbody == null`), il ne peut pas avoir été lancé : `return;` |
 | 2 | Si la vitesse du choc `collision.relativeVelocity.magnitude` est plus petite que `minSpeed` : `return;` |
 | 3 | Ajouter 1 à `hits`, puis afficher le compteur : `counter.text = hits + " / " + hitsNeeded;` |
-| 4 | Si `hits` est plus grand ou égal à `hitsNeeded` : `Solve();` |
+| 4 | Si `hits` vaut `hitsNeeded` (`==`) : `onSolved.Invoke();` |
 
 > **Astuce** : `return;` arrête la fonction tout de suite. On élimine d'abord les mauvais cas, et le code qui reste ne concerne que les bons lancers.
 

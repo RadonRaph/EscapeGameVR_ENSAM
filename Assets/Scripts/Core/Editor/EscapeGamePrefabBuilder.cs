@@ -1,14 +1,21 @@
+using SilhouetteOutline;
 using TMPro;
 using UnityEditor;
+using UnityEditor.Events;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Filtering;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
 
 /// <summary>
 /// [CORE - Éditeur] Construit les prefabs du TP (énigmes, portes, zone de téléportation).
 /// Menu EscapeGame > Configuration > Construire les prefabs.
+/// Les interactions sont branchées avec des UnityEvents (visibles dans l'Inspector) :
+///  - touches / molettes / bouton : Select Entered -> fonction de l'énigme
+///  - contour : Hover Entered / Hover Exited -> URP Outline.enabled
 /// Le devant de chaque énigme est du côté de la flèche bleue (Z) : elle doit pointer vers le joueur.
 /// </summary>
 public static class EscapeGamePrefabBuilder
@@ -55,11 +62,10 @@ public static class EscapeGamePrefabBuilder
 
     static void BuildDungeonDoor()
     {
-        // Arche fixe + grille qui disparaît quand la porte s'ouvre
+        // Arche fixe + grille : onSolved cache l'enfant "Grille"
         GameObject root = new GameObject("Porte_Donjon");
         AddModel(root.transform, "Assets/Kenney/ModularDungeonKit/gate.fbx", "Arche");
-        GameObject bars = AddModel(root.transform, "Assets/Kenney/ModularDungeonKit/gate-metal-bars.fbx", "Grille");
-        bars.AddComponent<Door>();
+        AddModel(root.transform, "Assets/Kenney/ModularDungeonKit/gate-metal-bars.fbx", "Grille");
         Save(root, PrefabFolder + "/Porte_Donjon.prefab");
     }
 
@@ -67,7 +73,6 @@ public static class EscapeGamePrefabBuilder
     {
         GameObject root = new GameObject("Porte_Station");
         AddModel(root.transform, "Assets/Kenney/SpaceStationKit/door-double-closed.fbx", "Porte");
-        root.AddComponent<Door>();
         Save(root, PrefabFolder + "/Porte_Station.prefab");
     }
 
@@ -81,8 +86,10 @@ public static class EscapeGamePrefabBuilder
         GameObject button = Cylinder(root.transform, "Bouton", new Vector3(0f, 0f, 0.015f), new Vector3(0.12f, 0.015f, 0.12f), Mat("Bouton_Rouge", new Color(0.85f, 0.1f, 0.1f), 0.6f));
         button.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
         ReplaceWithBoxCollider(button);
-        MakePressable(root);
-        root.AddComponent<SimpleButtonPuzzle>();
+
+        SimpleButtonPuzzle puzzle = root.AddComponent<SimpleButtonPuzzle>();
+        XRSimpleInteractable interactable = MakePressable(root);
+        UnityEventTools.AddVoidPersistentListener(interactable.selectEntered, puzzle.Press);
 
         Save(root, PuzzleFolder + "/BoutonSimple/BoutonSimple.prefab");
     }
@@ -116,9 +123,9 @@ public static class EscapeGamePrefabBuilder
             key.AddComponent<BoxCollider>().size = new Vector3(0.06f, 0.06f, 0.02f);
             Text(key.transform, "Texte", keys[i], new Vector3(0f, 0f, 0.0115f), 0.03f, Color.black);
 
-            MakePressable(key);
-            KeypadButton button = key.AddComponent<KeypadButton>();
-            button.key = keys[i];
+            // Select Entered -> Keypad.PressKey("valeur de la touche")
+            XRSimpleInteractable interactable = MakePressable(key);
+            UnityEventTools.AddStringPersistentListener(interactable.selectEntered, keypad.PressKey, keys[i]);
         }
 
         Save(root, PuzzleFolder + "/Keypad/Keypad.prefab");
@@ -129,7 +136,8 @@ public static class EscapeGamePrefabBuilder
         CreateFolder(PuzzleFolder, "KeyLock");
 
         // Clé : un anneau, une tige et des dents. La tige pointe vers +Z.
-        GameObject key = new GameObject("Cle");
+        // Son nom (Cle_Rouge) sert à la reconnaître dans la serrure.
+        GameObject key = new GameObject("Cle_Rouge");
         Material keyMaterial = Mat("Cle_Rouge", new Color(0.8f, 0.1f, 0.1f), 0.8f);
         GameObject ring = Cylinder(key.transform, "Anneau", new Vector3(0f, 0f, -0.035f), new Vector3(0.05f, 0.006f, 0.05f), keyMaterial);
         ring.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
@@ -142,14 +150,13 @@ public static class EscapeGamePrefabBuilder
         keyCollider.size = new Vector3(0.015f, 0.05f, 0.13f);
         Rigidbody keyBody = key.AddComponent<Rigidbody>();
         keyBody.mass = 0.1f;
-        key.AddComponent<XRGrabInteractable>();
-        key.AddComponent<HoverOutline>();
+        XRGrabInteractable grab = key.AddComponent<XRGrabInteractable>();
+        AddHoverOutline(grab);
         key.AddComponent<ResetIfFallen>();
-        Key keyScript = key.AddComponent<Key>();
-        keyScript.keyName = "Clé rouge";
-        Save(key, PuzzleFolder + "/KeyLock/Cle.prefab");
+        Save(key, PuzzleFolder + "/KeyLock/Cle_Rouge.prefab");
 
-        // Serrure : boîtier + trou de serrure. Le trigger détecte la clé.
+        // Serrure : un XR Socket Interactor. Quand on y pose un objet,
+        // Select Entered -> KeyLock.OnKeyInserted
         GameObject root = new GameObject("Serrure");
         Box(root.transform, "Boitier", new Vector3(0f, 0f, -0.03f), new Vector3(0.16f, 0.2f, 0.06f), Mat("Laiton", new Color(0.7f, 0.55f, 0.2f)), true);
         Box(root.transform, "Trou", new Vector3(0f, 0f, 0.0005f), new Vector3(0.02f, 0.05f, 0.002f), Mat("Noir", Color.black), false);
@@ -160,14 +167,18 @@ public static class EscapeGamePrefabBuilder
         slot.transform.localPosition = new Vector3(0f, 0f, 0.04f);
         slot.transform.localRotation = Quaternion.Euler(0f, 180f, 90f);
 
-        BoxCollider trigger = root.AddComponent<BoxCollider>();
+        GameObject socketObject = new GameObject("Socket");
+        socketObject.transform.SetParent(root.transform, false);
+        SphereCollider trigger = socketObject.AddComponent<SphereCollider>();
         trigger.isTrigger = true;
-        trigger.center = new Vector3(0f, 0f, 0.03f);
-        trigger.size = new Vector3(0.12f, 0.14f, 0.08f);
+        trigger.center = new Vector3(0f, 0f, 0.05f);
+        trigger.radius = 0.08f;
+        XRSocketInteractor socket = socketObject.AddComponent<XRSocketInteractor>();
+        socket.attachTransform = slot.transform;
 
         KeyLock keyLock = root.AddComponent<KeyLock>();
-        keyLock.keyName = "Clé rouge";
-        keyLock.keySlot = slot.transform;
+        keyLock.keyName = "Cle_Rouge";
+        UnityEventTools.AddPersistentListener(socket.selectEntered, keyLock.OnKeyInserted);
         Save(root, PuzzleFolder + "/KeyLock/Serrure.prefab");
     }
 
@@ -179,7 +190,7 @@ public static class EscapeGamePrefabBuilder
         Box(root.transform, "Panneau", new Vector3(0f, 0f, -0.02f), new Vector3(0.6f, 0.3f, 0.04f), Mat("Pierre", new Color(0.45f, 0.42f, 0.4f)), true);
 
         RotationPuzzle puzzle = root.AddComponent<RotationPuzzle>();
-        puzzle.dials = new RotatingDial[3];
+        puzzle.dials = new Transform[3];
 
         string[] symbols = { "A", "B", "C", "D" };
         Material dialMaterial = Mat("Molette", new Color(0.55f, 0.4f, 0.25f));
@@ -211,11 +222,12 @@ public static class EscapeGamePrefabBuilder
                 label.transform.localRotation = Quaternion.Euler(0f, 180f, -s * 360f / symbols.Length);
             }
 
-            MakePressable(dial);
-            RotatingDial rotatingDial = dial.AddComponent<RotatingDial>();
-            rotatingDial.symbolCount = symbols.Length;
-            puzzle.dials[i] = rotatingDial;
+            // Select Entered -> RotationPuzzle.TurnDial(numéro de la molette)
+            XRSimpleInteractable interactable = MakePressable(dial);
+            UnityEventTools.AddIntPersistentListener(interactable.selectEntered, puzzle.TurnDial, i);
+            puzzle.dials[i] = dial.transform;
         }
+        puzzle.symbolCount = symbols.Length;
 
         Save(root, PuzzleFolder + "/RotationPuzzle/Molettes.prefab");
     }
@@ -232,10 +244,9 @@ public static class EscapeGamePrefabBuilder
         Rigidbody ballBody = ball.AddComponent<Rigidbody>();
         ballBody.mass = 0.2f;
         ballBody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-        ball.AddComponent<XRGrabInteractable>();
-        ball.AddComponent<HoverOutline>();
+        XRGrabInteractable grab = ball.AddComponent<XRGrabInteractable>();
+        AddHoverOutline(grab);
         ball.AddComponent<ResetIfFallen>();
-        ball.AddComponent<Throwable>();
         Save(ball, PuzzleFolder + "/ThrowTarget/Projectile.prefab");
 
         // Cible
@@ -268,12 +279,37 @@ public static class EscapeGamePrefabBuilder
     // ---------------------------------------------------------------- Outils
 
     // Interactions "appui" : doigt (poke) ou rayon + contour au survol
-    static void MakePressable(GameObject target)
+    static XRSimpleInteractable MakePressable(GameObject target)
     {
-        target.AddComponent<XRSimpleInteractable>();
+        XRSimpleInteractable interactable = target.AddComponent<XRSimpleInteractable>();
         XRPokeFilter poke = target.AddComponent<XRPokeFilter>();
         poke.pokeConfiguration.Value.pokeDirection = PokeAxis.NegativeZ;
-        target.AddComponent<HoverOutline>();
+        AddHoverOutline(interactable);
+        return interactable;
+    }
+
+    // Contour au survol, sans script : URP Outline désactivé,
+    // Hover Entered l'active et Hover Exited le désactive (événements de l'Inspector)
+    public static void AddHoverOutline(XRBaseInteractable interactable)
+    {
+        URPOutline outline = interactable.gameObject.AddComponent<URPOutline>();
+        outline.Color = new Color(1f, 0.8f, 0.2f);
+        outline.Width = 8f;
+        outline.enabled = false;
+
+        UnityAction<bool> setEnabled = (UnityAction<bool>)System.Delegate.CreateDelegate(typeof(UnityAction<bool>), outline, "set_enabled");
+        UnityEventTools.AddBoolPersistentListener(interactable.hoverEntered, setEnabled, true);
+        UnityEventTools.AddBoolPersistentListener(interactable.hoverExited, setEnabled, false);
+    }
+
+    // onSolved d'une énigme -> cache la grille (GameObject.SetActive(false))
+    public static void OpenOnSolved(Component puzzle, UnityEvent onSolved, GameObject door)
+    {
+        UnityEventTools.AddBoolPersistentListener(onSolved, new UnityAction<bool>(door.SetActive), false);
+        if (PrefabUtility.IsPartOfPrefabInstance(puzzle))
+        {
+            PrefabUtility.RecordPrefabInstancePropertyModifications(puzzle);
+        }
     }
 
     static GameObject AddModel(Transform parent, string path, string name)

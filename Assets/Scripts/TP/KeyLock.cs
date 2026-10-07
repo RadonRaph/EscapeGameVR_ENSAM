@@ -1,29 +1,37 @@
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit;
 
 /// <summary>
-/// [TP] Serrure : s'ouvre quand on y met la bonne clé.
-/// Le BoxCollider de la serrure est un trigger : OnTriggerEnter est appelé
-/// quand un objet (la clé) entre dedans.
+/// [TP] Serrure : s'ouvre quand on y pose la bonne clé.
+/// La serrure est un XR Socket Interactor : quand un objet y est posé,
+/// son événement Select Entered appelle OnKeyInserted (voir l'Inspector).
 /// Voir Prefabs/Enigmes/KeyLock/README_KeyLock.md
 /// </summary>
-public class KeyLock : Puzzle
+public class KeyLock : MonoBehaviour
 {
     [Header("Serrure")]
-    [Tooltip("Nom de la clé qui ouvre cette serrure (keyName du script Key)")]
-    public string keyName = "Clé rouge";
+    [Tooltip("Nom de l'objet clé qui ouvre cette serrure (son nom dans la Hierarchy)")]
+    public string keyName = "Cle_Rouge";
 
-    [Tooltip("Endroit où la clé se place une fois insérée")]
-    public Transform keySlot;
+    [Header("Quand la bonne clé est posée")]
+    public UnityEvent onSolved;
 
-    void OnTriggerEnter(Collider other)
+    // args contient l'objet qui vient d'être posé dans la serrure
+    public void OnKeyInserted(SelectEnterEventArgs args)
     {
-        // TODO 1 : récupérer le script Key de l'objet entré : other.GetComponentInParent<Key>()
-        //          si l'objet n'a pas de Key (résultat null), arrêter la fonction (return)
+        // L'objet posé dans la serrure
+        GameObject key = args.interactableObject.transform.gameObject;
+        Debug.Log("Objet posé dans la serrure : " + key.name);
 
-        // TODO 2 : si le keyName de la clé est différent de keyName :
-        //          afficher "Ce n'est pas la bonne clé" dans la Console et arrêter la fonction
+        // TODO 1 : si le nom de l'objet (key.name) est différent de keyName :
+        //          - afficher "Ce n'est pas la bonne clé" dans la Console avec Debug.Log("...");
+        //          - arrêter la fonction avec return;
+        //          Astuce : "différent de" s'écrit !=   ->   if (key.name != keyName) { ... }
+        //          return; arrête la fonction tout de suite : le code en dessous n'est pas exécuté.
 
-        // TODO 3 : c'est la bonne clé : la fixer dans la serrure avec InsertInto(keySlot)
-        //          puis appeler Solve()
+        // TODO 2 : si on arrive ici, c'est la bonne clé : déclencher l'événement onSolved.
+        //          Astuce : onSolved.Invoke();
+        //          Bonus : afficher aussi un message de réussite avec Debug.Log
     }
 }

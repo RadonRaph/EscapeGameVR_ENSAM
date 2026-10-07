@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 8520073405819357409}
   - component: {fileID: 4715855668720518500}
   - component: {fileID: 2825439362052600998}
-  - component: {fileID: 1442003230857974733}
+  - component: {fileID: 9124505436969928365}
   - component: {fileID: 7830996236745926817}
-  - component: {fileID: 5518096595752966906}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -179,10 +178,34 @@ MonoBehaviour:
       m_Calls: []
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9124505436969928365}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9124505436969928365}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -274,20 +297,21 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
---- !u!114 &1442003230857974733
+--- !u!114 &9124505436969928365
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4269887945589841171}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e27126604f365452c9848a4c64b385c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 66e06c7e0e1d478188d7ef363d4c2085, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HoverOutline
-  color: {r: 1, g: 0.8, b: 0.2, a: 1}
-  width: 8
+  m_EditorClassIdentifier: SilhouetteOutline::SilhouetteOutline.URPOutline
+  _color: {r: 1, g: 0.8, b: 0.2, a: 1}
+  _width: 8
+  _includeChildren: 1
 --- !u!114 &7830996236745926817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,15 +325,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResetIfFallen
   minHeight: -5
---- !u!114 &5518096595752966906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4269887945589841171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eceb669e68204bfb87bd393fd99b324, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Throwable

@@ -31,7 +31,7 @@ Dans l'éditeur, quand aucun casque n'est branché, le **XR Interaction Simulato
 |---|---|
 | `Scripts/TP/` | **Les scripts des énigmes à compléter** : `Keypad`, `KeyLock`, `RotationPuzzle`, `ThrowTarget`. |
 | `Scripts/Exemple/` | `SimpleButtonPuzzle` : une énigme complète, à lire pour comprendre. |
-| `Scripts/Core/` | Le moteur du TP (pas besoin de le modifier) : `Puzzle`, `Door`, `Key`, `HoverOutline`... |
+| `Scripts/Core/` | Deux outils (pas besoin de les modifier) : `ResetIfFallen` (un objet tombé hors du niveau revient à sa place) et `TeleportZone`. |
 | `Prefabs/Enigmes/` | Un dossier par énigme : les prefabs et un **README** qui explique comment les installer et quoi coder. |
 | `Prefabs/` | Les portes (`Porte_Donjon`, `Porte_Station`) et la `ZoneTeleportation`. |
 | `Kenney/` | Les modèles 3D : `FurnitureKit` (meubles), `ModularDungeonKit` (donjon), `SpaceStationKit` (station spatiale). |
@@ -42,17 +42,49 @@ Cherchez `TODO` dans le dossier `Scripts/TP` pour trouver le code à écrire.
 
 ## Comment marche une énigme
 
-Toutes les énigmes héritent de la classe `Puzzle`. Quand le joueur trouve la solution, le script appelle `Solve()` :
+Tout passe par des **UnityEvents** : des listes d'actions réglées dans l'Inspector, sans code. Le XR Interaction Toolkit en utilise partout.
 
-- la porte du champ `Door To Open` s'ouvre (elle disparaît) ;
-- les actions de `On Solved` sont lancées (une animation, un effet, une lumière...).
+1. **Le joueur interagit** : un composant XR déclenche un de ses événements (`Interactable Events` dans l'Inspector).
+   - `XR Simple Interactable` (bouton, touche, molette) : `Select Entered` quand on appuie dessus.
+   - `XR Grab Interactable` (objet à attraper) : `Select Entered` quand on l'attrape.
+   - `XR Socket Interactor` (emplacement où poser un objet) : `Select Entered` quand un objet y est posé.
+   - Tous : `Hover Entered` / `Hover Exited` quand une main vise l'objet ou ne le vise plus.
+2. **L'événement appelle une fonction publique** du script de l'énigme (ex : `Keypad.PressKey("4")`).
+3. **Quand l'énigme est réussie**, le script déclenche son propre événement `On Solved` : `onSolved.Invoke();`
+4. **`On Solved` ouvre la porte** : dans l'Inspector, `+`, glissez la `Grille` de la porte, choisissez `GameObject` → `SetActive (bool)` et laissez la case **décochée**. Vous pouvez ajouter d'autres actions : une animation, une lumière, des particules...
 
-| Champ (Inspector) | Rôle |
+Lisez `Scripts/Exemple/SimpleButtonPuzzle.cs` et l'Inspector du prefab `BoutonSimple` : c'est une énigme complète.
+
+| Événement à brancher | Exemple dans le projet |
 |---|---|
-| `Door To Open` | La porte à ouvrir : glissez l'objet qui a le script `Door` (pour `Porte_Donjon`, c'est l'enfant `Grille`). |
-| `On Solved` | Optionnel : `+` puis glissez un objet et choisissez une fonction à appeler. |
+| `Select Entered` → fonction de l'énigme | Bouton rouge → `SimpleButtonPuzzle.Press()` |
+| `On Solved` → `GameObject.SetActive(false)` | `BoutonSimple` → la `Grille` de la porte |
+| `Hover Entered` / `Hover Exited` → `URPOutline.enabled` | Contour jaune de toutes les touches et objets |
 
-Lisez `Scripts/Exemple/SimpleButtonPuzzle.cs` : c'est une énigme complète en 10 lignes.
+### Mémo C#
+
+Tout ce qu'il faut pour écrire le code des énigmes :
+
+| Je veux... | J'écris | Exemple |
+|---|---|---|
+| Écrire un message dans la Console | `Debug.Log(...)` | `Debug.Log("Touche : " + key);` |
+| Donner une valeur à une variable | `=` (un seul égal) | `typed = "";` |
+| Tester si deux valeurs sont égales | `==` (deux égal) | `if (key == "OK") { ... }` |
+| Tester si deux valeurs sont différentes | `!=` | `if (key.name != keyName) { ... }` |
+| Comparer deux nombres | `<` `>` `<=` `>=` | `if (speed < minSpeed) { ... }` |
+| Coller des textes (et des nombres) | `+` | `counter.text = hits + " / " + hitsNeeded;` |
+| Ajouter 1 à un nombre | `x = x + 1;` | `hits = hits + 1;` |
+| Enchaîner plusieurs cas | `if` / `else if` / `else` | `if (a) { ... } else if (b) { ... } else { ... }` |
+| Répéter pour chaque case d'un tableau | `for` | `for (int i = 0; i < dials.Length; i++) { ... }` |
+| Lire la case numéro i d'un tableau | `tableau[i]` | `solution[i]` |
+| Arrêter la fonction tout de suite | `return;` | `if (collision.rigidbody == null) { return; }` |
+| Tester si quelque chose est vide | `== null` | `if (counter == null) { ... }` |
+| Changer un texte affiché | `.text` | `display.text = typed;` |
+| Déclencher l'événement de réussite | `onSolved.Invoke();` | (ouvre la porte réglée dans l'Inspector) |
+
+> **Règles de base** : chaque instruction finit par `;`. Chaque `{` a sa `}`. Les majuscules comptent : `Debug.Log` marche, `debug.log` non.
+>
+> **Le réflexe Debug.Log** : quand quelque chose ne marche pas, affichez les valeurs dans la Console (`Debug.Log("hits = " + hits);`) pour voir ce qui se passe vraiment.
 
 ### Le devant des énigmes
 
@@ -64,9 +96,10 @@ Le devant de chaque prefab d'énigme est du côté de la **flèche bleue** (axe 
 
 Dans `EscapeGame_Exemple` :
 
-1. Lancez Play. Déplacez-vous (téléportation), attrapez l'ours en peluche, appuyez sur le bouton rouge.
-2. Sélectionnez `BoutonSimple` et regardez son champ `Door To Open`.
-3. Approchez une main d'un objet : il s'entoure d'un contour jaune. C'est le script `HoverOutline`.
+1. Lancez Play. Déplacez-vous (téléportation), attrapez l'ours en peluche, appuyez 3 fois sur le bouton rouge.
+2. Sélectionnez `BoutonSimple` : dans `XR Simple Interactable` → `Interactable Events`, regardez `Select Entered`. Puis regardez `On Solved` dans `Simple Button Puzzle`.
+3. Changez `Presses Needed` à 5 et relancez.
+4. Approchez une main d'un objet : il s'entoure d'un contour jaune. Trouvez les deux événements qui l'allument et l'éteignent (`Hover Entered` / `Hover Exited`).
 
 ## Étape 2 : Compléter au moins une énigme
 
@@ -93,7 +126,8 @@ Construisez dans `EscapeGame_TP` **deux salles thématiques** (exemple : un donj
 
 - **Se déplacer** : glissez `Prefabs/ZoneTeleportation` sur le sol, puis agrandissez-la avec l'outil Scale (boîte verte dans la vue Scene).
 - **Murs et sols** : les modèles Kenney ont déjà des colliders. Le joueur ne peut pas les traverser.
-- **Attraper un objet** : `Add Component` → `XR Grab Interactable` (un Rigidbody est ajouté automatiquement). Ajoutez aussi `Hover Outline` pour le contour.
+- **Attraper un objet** : `Add Component` → `XR Grab Interactable` (un Rigidbody est ajouté automatiquement).
+  - **Contour** : `Add Component` → `URP Outline`, **décochez** le composant. Dans `XR Grab Interactable` → `Interactable Events` : `Hover Entered` → `URPOutline.enabled` coché, `Hover Exited` → `URPOutline.enabled` décoché.
   - Cochez **Convex** sur ses `Mesh Collider` : ils sont souvent sur les **enfants** du modèle, dépliez-le dans la Hierarchy.
   - Un objet que l'on attrape ne doit **pas** être `Contribute GI` (voir étape 5).
 
@@ -101,14 +135,14 @@ Construisez dans `EscapeGame_TP` **deux salles thématiques** (exemple : un donj
 
 Votre niveau doit contenir **au moins deux énigmes de mécaniques différentes** (deux keypads ne comptent que pour une). Placez un **indice** dans la salle : le code écrit au dos d'un tableau, la couleur de la clé sur un livre...
 
-Idées d'énigmes (sans prefab fourni). Pour chacune, partez de `SimpleButtonPuzzle` : une classe qui hérite de `Puzzle` et appelle `Solve()`.
+Idées d'énigmes (sans prefab fourni). Pour chacune, partez de `SimpleButtonPuzzle` : une fonction publique appelée par un événement XR, et `onSolved.Invoke()` quand c'est réussi.
 
 | Énigme | Principe | Pistes |
 |---|---|---|
-| Séquence de leviers | Actionner des leviers dans le bon ordre. | Chaque levier est un bouton (`XR Simple Interactable`) qui envoie son numéro, comme `KeypadButton`. |
-| Objet à placer | Poser le bon objet sur un socle (une statue, une gemme...). | Un trigger sur le socle et `OnTriggerEnter`, comme `KeyLock`. |
-| Combinaison de socles | Plusieurs socles, chacun attend un objet précis. | Plusieurs triggers + un tableau, comme `RotationPuzzle`. |
-| Balance | Poser des objets pour atteindre le bon poids. | Additionner le `mass` des `Rigidbody` posés dans un trigger. |
+| Séquence de leviers | Actionner des leviers dans le bon ordre. | Chaque levier est un `XR Simple Interactable` dont `Select Entered` envoie son numéro, comme les molettes. |
+| Objet à placer | Poser le bon objet sur un socle (une statue, une gemme...). | Un `XR Socket Interactor` sur le socle, comme la serrure. |
+| Combinaison de socles | Plusieurs socles, chacun attend un objet précis. | Plusieurs sockets + un tableau, comme `RotationPuzzle`. |
+| Balance | Poser des objets pour atteindre le bon poids. | Un trigger et `OnTriggerEnter` / `OnTriggerExit` : additionner le `mass` des `Rigidbody`. |
 | Mémoire (Simon) | Reproduire une séquence de boutons qui s'allument. | Une coroutine pour allumer les boutons, puis comparer comme le keypad. |
 
 ## Étape 5 : Lighting baked
@@ -135,7 +169,7 @@ Enregistrez une vidéo de votre niveau du début à la fin, **depuis le casque**
 
 - **2e énigme complétée, ou nouveau mécanisme** : une autre énigme fournie, ou une énigme de votre invention.
 - **Matériaux / VFX** : un shader, des particules quand une énigme est résolue, des objets émissifs...
-- **Animation de feedback** : une porte, un tiroir ou un coffre qui s'ouvre avec une animation (`Animator`), lancée depuis `On Solved`.
+- **Animation de feedback** : une porte, un tiroir ou un coffre qui s'ouvre avec une animation (`Animator`), lancée depuis `On Solved` (au lieu de `SetActive`).
 - **Fin de partie** : une zone de victoire, un chrono affiché à la sortie, un écran de fin.
 - **Idée pertinente / originalité** : un scénario, une mise en scène, une énigme surprenante...
 
@@ -196,5 +230,6 @@ Enregistrez une vidéo de votre niveau du début à la fin, **depuis le casque**
 
 ### La porte ne s'ouvre pas
 
-- La Console affiche-t-elle `Énigme résolue` ? Si non, c'est votre code : relisez les TODO.
-- Si oui : le champ `Door To Open` de l'énigme est-il rempli ?
+- Votre code appelle-t-il bien `onSolved.Invoke()` ? Ajoutez un `Debug.Log` juste avant pour vérifier.
+- Si oui : `On Solved` contient-il bien la `Grille`, avec `GameObject` → `SetActive` et la case **décochée** ?
+- Un événement XR (`Select Entered`...) ne fait rien : vérifiez qu'il appelle la bonne fonction, sur le bon objet. Une fonction n'apparaît dans la liste que si elle est `public`.

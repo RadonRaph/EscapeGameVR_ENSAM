@@ -87,8 +87,8 @@ public static class EscapeGameSceneBuilder
         // L'énigme : un bouton posé sur la table, qui ouvre la grille
         GameObject button = Prefab(Puzzles + "BoutonSimple/BoutonSimple.prefab", room1.transform, TopCenter(table) + new Vector3(0f, 0.04f, 0f), 0f);
         button.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
-        button.GetComponent<Puzzle>().doorToOpen = door.GetComponentInChildren<Door>();
-        Label(room1.transform, "Appuie sur le bouton rouge", new Vector3(0f, 1.6f, 2.8f), 180f, 0.15f);
+        EscapeGamePrefabBuilder.OpenOnSolved(button.GetComponent<SimpleButtonPuzzle>(), button.GetComponent<SimpleButtonPuzzle>().onSolved, Grille(door));
+        Label(room1.transform, "Appuie 3 fois sur le bouton rouge", new Vector3(0f, 1.6f, 2.8f), 180f, 0.15f);
 
         // Salle 2 : station spatiale (3 x 3 tuiles), ouverte au sud vers le donjon
         GameObject room2 = new GameObject("Salle2_Station");
@@ -117,37 +117,37 @@ public static class EscapeGameSceneBuilder
 
         float wallZ = 1.5f * DungeonTile - 0.35f;
         float[] gateX = { -2f * DungeonTile, -DungeonTile, DungeonTile, 2f * DungeonTile };
-        Door[] doors = new Door[4];
+        GameObject[] doors = new GameObject[4];
         for (int i = 0; i < 4; i++)
         {
             PointLight(room.transform, new Vector3(gateX[i], 2.2f, 0.8f), new Color(1f, 0.85f, 0.65f), 1.5f, 3.5f);
             GameObject gate = Prefab(EscapeGamePrefabBuilder.PrefabFolder + "/Porte_Donjon.prefab", room.transform, new Vector3(gateX[i], 0f, wallZ), 0f);
-            doors[i] = gate.GetComponentInChildren<Door>();
+            doors[i] = Grille(gate);
         }
 
         // Keypad sur un socle
         Pedestal(room.transform, new Vector3(gateX[0], 0f, 1.6f), 1.0f);
         GameObject keypad = Prefab(Puzzles + "Keypad/Keypad.prefab", room.transform, new Vector3(gateX[0], 1.25f, 1.62f), 180f);
-        keypad.GetComponent<Puzzle>().doorToOpen = doors[0];
+        EscapeGamePrefabBuilder.OpenOnSolved(keypad.GetComponent<Keypad>(), keypad.GetComponent<Keypad>().onSolved, doors[0]);
         Label(room.transform, "Keypad\nCode : 1234", new Vector3(gateX[0], 2.0f, 2.2f), 180f, 0.12f);
 
         // Serrure sur un socle, la clé sur une table
         Pedestal(room.transform, new Vector3(gateX[1], 0f, 1.6f), 1.0f);
         GameObject keyLock = Prefab(Puzzles + "KeyLock/Serrure.prefab", room.transform, new Vector3(gateX[1], 1.15f, 1.62f), 180f);
-        keyLock.GetComponent<Puzzle>().doorToOpen = doors[1];
+        EscapeGamePrefabBuilder.OpenOnSolved(keyLock.GetComponent<KeyLock>(), keyLock.GetComponent<KeyLock>().onSolved, doors[1]);
         GameObject sideTable = Static(Centered(Model(Furniture + "sideTable.fbx", room.transform, Vector3.zero, 0f), new Vector3(gateX[1] + 1f, 0f, 0.6f)));
-        Prefab(Puzzles + "KeyLock/Cle.prefab", room.transform, TopCenter(sideTable) + new Vector3(0f, 0.05f, 0f), 90f);
+        Prefab(Puzzles + "KeyLock/Cle_Rouge.prefab", room.transform, TopCenter(sideTable) + new Vector3(0f, 0.05f, 0f), 90f);
         Label(room.transform, "Serrure\nTrouve la clé rouge", new Vector3(gateX[1], 2.0f, 2.2f), 180f, 0.12f);
 
         // Molettes sur un socle
         Pedestal(room.transform, new Vector3(gateX[2], 0f, 1.6f), 1.0f);
         GameObject dials = Prefab(Puzzles + "RotationPuzzle/Molettes.prefab", room.transform, new Vector3(gateX[2], 1.2f, 1.62f), 180f);
-        dials.GetComponent<Puzzle>().doorToOpen = doors[2];
+        EscapeGamePrefabBuilder.OpenOnSolved(dials.GetComponent<RotationPuzzle>(), dials.GetComponent<RotationPuzzle>().onSolved, doors[2]);
         Label(room.transform, "Molettes\nSolution : B D C", new Vector3(gateX[2], 2.0f, 2.2f), 180f, 0.12f);
 
         // Cible contre le mur, projectiles sur une table à 3 m
         GameObject target = Prefab(Puzzles + "ThrowTarget/Cible.prefab", room.transform, new Vector3(gateX[3], 1.4f, 2.2f), 180f);
-        target.GetComponent<Puzzle>().doorToOpen = doors[3];
+        EscapeGamePrefabBuilder.OpenOnSolved(target.GetComponent<ThrowTarget>(), target.GetComponent<ThrowTarget>().onSolved, doors[3]);
         GameObject ballTable = Static(Centered(Model(Furniture + "table.fbx", room.transform, Vector3.zero, 0f), new Vector3(gateX[3], 0f, -1.2f)));
         for (int i = 0; i < 3; i++)
         {
@@ -319,8 +319,7 @@ public static class EscapeGameSceneBuilder
             colliders[i].convex = true;
         }
         target.AddComponent<Rigidbody>();
-        target.AddComponent<XRGrabInteractable>();
-        target.AddComponent<HoverOutline>();
+        EscapeGamePrefabBuilder.AddHoverOutline(target.AddComponent<XRGrabInteractable>());
         target.AddComponent<ResetIfFallen>();
     }
 
@@ -350,6 +349,12 @@ public static class EscapeGameSceneBuilder
             bounds.Encapsulate(renderers[i].bounds);
         }
         return bounds;
+    }
+
+    // La grille d'une Porte_Donjon : c'est elle que onSolved cache
+    static GameObject Grille(GameObject door)
+    {
+        return door.transform.Find("Grille").gameObject;
     }
 
     static void Pedestal(Transform parent, Vector3 position, float height)

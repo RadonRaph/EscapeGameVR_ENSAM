@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3446116583205915083}
+  - component: {fileID: 5175279673700481476}
   - component: {fileID: 405390667013171329}
   - component: {fileID: 6482439861517456977}
-  - component: {fileID: 7193844538191533989}
-  - component: {fileID: 5175279673700481476}
+  - component: {fileID: 7884480942306165908}
   m_Layer: 0
   m_Name: BoutonSimple
   m_TagString: Untagged
@@ -37,6 +37,22 @@ Transform:
   - {fileID: 8128910218382198348}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5175279673700481476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479348484141577047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9aef1ffbd88142f1831dc6848f23d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleButtonPuzzle
+  pressesNeeded: 3
+  onSolved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &405390667013171329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,10 +88,34 @@ MonoBehaviour:
       m_Calls: []
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7884480942306165908}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7884480942306165908}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -84,7 +124,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5175279673700481476}
+        m_TargetAssemblyTypeName: SimpleButtonPuzzle, Assembly-CSharp
+        m_MethodName: Press
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -133,36 +185,21 @@ MonoBehaviour:
       m_EnablePokeAngleThreshold: 1
       m_PokeAngleThreshold: 45
     m_Variable: {fileID: 0}
---- !u!114 &7193844538191533989
+--- !u!114 &7884480942306165908
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479348484141577047}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e27126604f365452c9848a4c64b385c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 66e06c7e0e1d478188d7ef363d4c2085, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HoverOutline
-  color: {r: 1, g: 0.8, b: 0.2, a: 1}
-  width: 8
---- !u!114 &5175279673700481476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479348484141577047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9aef1ffbd88142f1831dc6848f23d20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SimpleButtonPuzzle
-  doorToOpen: {fileID: 0}
-  onSolved:
-    m_PersistentCalls:
-      m_Calls: []
+  m_EditorClassIdentifier: SilhouetteOutline::SilhouetteOutline.URPOutline
+  _color: {r: 1, g: 0.8, b: 0.2, a: 1}
+  _width: 8
+  _includeChildren: 1
 --- !u!1 &5365964632491965939
 GameObject:
   m_ObjectHideFlags: 0
