@@ -24,6 +24,16 @@ public class KeyLock : MonoBehaviour
         GameObject key = args.interactableObject.transform.gameObject;
         Debug.Log("Objet posé dans la serrure : " + key.name);
 
+        if (keyName != key.name)
+        {
+            Debug.Log("Ce n'est pas la bonne clé");
+            return;
+        } else
+        {
+            Debug.Log("Vous avez réussi !");
+            onSolved.Invoke();
+        }
+
         // TODO 1 : si le nom de l'objet (key.name) est différent de keyName :
         //          - afficher "Ce n'est pas la bonne clé" dans la Console avec Debug.Log("...");
         //          - arrêter la fonction avec return;
