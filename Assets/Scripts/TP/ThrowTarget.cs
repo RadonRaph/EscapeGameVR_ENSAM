@@ -31,6 +31,17 @@ public class ThrowTarget : MonoBehaviour
         //          S'il n'en a pas (il vaut null), arrêter la fonction.
         //          Astuce : if (collision.rigidbody == null) { return; }
 
+        if (collision.rigidbody == null || collision.relativeVelocity.magnitude < minSpeed) { return; }
+
+        hits += 1;
+        counter.text = hits + " / " + hitsNeeded;
+
+        if (hits == hitsNeeded)
+        {
+            counter.text = "Win";
+            onSolved.Invoke();
+        }
+
         // TODO 2 : vérifier la vitesse du choc : collision.relativeVelocity.magnitude (en m/s).
         //          Si elle est plus petite que minSpeed, arrêter la fonction.
         //          Astuce : "plus petit que" s'écrit <

@@ -45,6 +45,16 @@ public class RotationPuzzle : MonoBehaviour
         //          Astuce : for (int i = 0; i < dials.Length; i++) { ... }
         //          i vaut 0, puis 1, puis 2... jusqu'au nombre de molettes (dials.Length) non compris.
 
+        for (int i = 0; i < dials.Length; i++)
+        {
+            if (current[i] != solution[i])
+            {
+                return;
+            }
+        }
+
+        onSolved.Invoke();
+
         // TODO 2 : dans la boucle, si current[i] est différent de solution[i],
         //          cette molette n'est pas sur le bon symbole : arrêter la fonction.
         //          Astuce : "différent de" s'écrit !=   ->   if (current[i] != solution[i]) { return; }
