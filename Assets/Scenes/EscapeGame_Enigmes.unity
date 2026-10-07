@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 13459537}
   - component: {fileID: 13459538}
   - component: {fileID: 13459539}
+  - component: {fileID: 13459540}
   m_Layer: 0
   m_Name: Lumiere
   m_TagString: Untagged
@@ -207,7 +208,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -251,6 +252,22 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &13459540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13459536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f36e0f6a27eaa44b992a36022fa2598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TorchFlicker
+  minIntensity: 1.4
+  maxIntensity: 2.6
+  speed: 5
+  moveAmount: 0.05
 --- !u!1 &68225727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,6 +1208,7 @@ GameObject:
   - component: {fileID: 383655433}
   - component: {fileID: 383655434}
   - component: {fileID: 383655435}
+  - component: {fileID: 383655436}
   m_Layer: 0
   m_Name: Lumiere
   m_TagString: Untagged
@@ -1263,7 +1281,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1307,6 +1325,22 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &383655436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383655432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f36e0f6a27eaa44b992a36022fa2598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TorchFlicker
+  minIntensity: 1.4
+  maxIntensity: 2.6
+  speed: 5
+  moveAmount: 0.05
 --- !u!4 &390379341 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 121a5abb6831e42b99c9312869671143, type: 3}
@@ -1908,6 +1942,7 @@ GameObject:
   - component: {fileID: 585303284}
   - component: {fileID: 585303285}
   - component: {fileID: 585303286}
+  - component: {fileID: 585303287}
   m_Layer: 0
   m_Name: Lumiere
   m_TagString: Untagged
@@ -1980,7 +2015,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2024,6 +2059,22 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &585303287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585303283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f36e0f6a27eaa44b992a36022fa2598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TorchFlicker
+  minIntensity: 1.4
+  maxIntensity: 2.6
+  speed: 5
+  moveAmount: 0.05
 --- !u!4 &599123621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7833b8724028f410fa7eb238fb169a45, type: 3}
@@ -2824,6 +2875,7 @@ GameObject:
   - component: {fileID: 817928498}
   - component: {fileID: 817928499}
   - component: {fileID: 817928500}
+  - component: {fileID: 817928501}
   m_Layer: 0
   m_Name: Lumiere
   m_TagString: Untagged
@@ -2896,7 +2948,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2940,6 +2992,22 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &817928501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817928497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f36e0f6a27eaa44b992a36022fa2598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TorchFlicker
+  minIntensity: 1.4
+  maxIntensity: 2.6
+  speed: 5
+  moveAmount: 0.05
 --- !u!1001 &836402105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7252,6 +7320,7 @@ GameObject:
   - component: {fileID: 1899136637}
   - component: {fileID: 1899136638}
   - component: {fileID: 1899136639}
+  - component: {fileID: 1899136640}
   m_Layer: 0
   m_Name: Lumiere
   m_TagString: Untagged
@@ -7324,7 +7393,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -7368,6 +7437,22 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &1899136640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899136636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f36e0f6a27eaa44b992a36022fa2598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TorchFlicker
+  minIntensity: 1.4
+  maxIntensity: 2.6
+  speed: 5
+  moveAmount: 0.05
 --- !u!1001 &1900355068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8559,6 +8644,7 @@ GameObject:
   - component: {fileID: 2105163288}
   - component: {fileID: 2105163289}
   - component: {fileID: 2105163290}
+  - component: {fileID: 2105163291}
   m_Layer: 0
   m_Name: Lumiere
   m_TagString: Untagged
@@ -8631,7 +8717,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -8675,6 +8761,22 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &2105163291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105163287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f36e0f6a27eaa44b992a36022fa2598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TorchFlicker
+  minIntensity: 1.4
+  maxIntensity: 2.6
+  speed: 5
+  moveAmount: 0.05
 --- !u!4 &2109825516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7833b8724028f410fa7eb238fb169a45, type: 3}
