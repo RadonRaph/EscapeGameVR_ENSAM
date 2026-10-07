@@ -7,7 +7,7 @@ public class OpenDoor_Invoke : MonoBehaviour
     
     public void bougerPorte()
     {
-        transform.Translate(0f, 0.9f, 0f,Space.World);
+        transform.Translate(0f, 1.8f, 0f,Space.World);
     }
 
 }
