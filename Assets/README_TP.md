@@ -16,10 +16,6 @@ Salle 1 (thème A) → énigme → porte → Salle 2 (thème B) → énigme → 
 - La scène `EscapeGame_Enigmes` est un **banc d'essai** : les 4 énigmes à compléter, chacune devant une grille. Testez-y votre code.
 - Votre scène de travail est `Assets/Scenes/EscapeGame_TP.unity`. Elle contient seulement un sol, une lumière et le joueur.
 
-### Tester sans casque
-
-Dans l'éditeur, quand aucun casque n'est branché, le **XR Interaction Simulator** apparaît automatiquement en Play : il simule le casque et les manettes au clavier et à la souris. Les touches sont rappelées dans la vue Game.
-
 ### Tester avec le casque
 
 - **Quest Link** (PC Windows) : branchez le casque, activez Link, puis lancez Play dans Unity.
