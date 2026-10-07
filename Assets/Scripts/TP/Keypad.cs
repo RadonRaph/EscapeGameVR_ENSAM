@@ -27,29 +27,6 @@ public class Keypad : MonoBehaviour
     public void PressKey(string key)
     {
         Debug.Log("Touche : " + key);
-        //todo1
-        if (key == "C")
-        {
-            typed = "";
-        //todo2
-        } 
-        else if (key == "OK")
-        {
-            if (typed == code)
-            {
-                onSolved.Invoke();
-            }
-            else
-            {
-                typed = "";
-            }
-         } 
-         else 
-         {
-                typed = typed + key;
-         }
-    
-        display.text = typed;
 
         //todo1
         if (key == "C")
