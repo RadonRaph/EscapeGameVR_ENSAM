@@ -26,24 +26,28 @@ public class ThrowTarget : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // TODO 1 : vérifier que l'objet peut être lancé : il doit avoir un Rigidbody.
-        //          Le Rigidbody de l'objet qui touche la cible est dans collision.rigidbody.
-        //          S'il n'en a pas (il vaut null), arrêter la fonction.
-        //          Astuce : if (collision.rigidbody == null) { return; }
+        // TODO 1 : l'objet doit avoir un Rigidbody (sinon il n'a pas été lancé)
+        if (collision.rigidbody == null)
+        {
+            return;
+        }
 
-        // TODO 2 : vérifier la vitesse du choc : collision.relativeVelocity.magnitude (en m/s).
-        //          Si elle est plus petite que minSpeed, arrêter la fonction.
-        //          Astuce : "plus petit que" s'écrit <
-        //          Pour régler minSpeed, affichez la vitesse de chaque choc :
-        //          Debug.Log("Vitesse : " + collision.relativeVelocity.magnitude);
+        // TODO 2 : le choc doit être assez fort
+        Debug.Log("Vitesse : " + collision.relativeVelocity.magnitude);
+        if (collision.relativeVelocity.magnitude < minSpeed)
+        {
+            return;
+        }
 
-        // TODO 3 : ajouter 1 à hits, puis afficher le compteur sur la cible (exemple : "2 / 3").
-        //          Astuce : hits = hits + 1;
-        //          Le texte affiché est dans counter.text. On colle textes et nombres avec +
-        //          ->   counter.text = hits + " / " + hitsNeeded;
+        // TODO 3 : on compte la touche et on affiche le compteur
+        hits = hits + 1;
+        counter.text = hits + " / " + hitsNeeded;
 
-        // TODO 4 : si hits vaut hitsNeeded, déclencher l'événement onSolved.
-        //          Astuce : "égal à" s'écrit == (deux signes égal, un seul = sert à donner une valeur)
-        //          ->   if (hits == hitsNeeded) { ... }   puis   onSolved.Invoke();
+        // TODO 4 : assez de touches -> énigme résolue
+        if (hits == hitsNeeded)
+        {
+            Debug.Log("Cible touchée " + hits + " fois, énigme résolue !");
+            onSolved.Invoke();
+        }
     }
 }

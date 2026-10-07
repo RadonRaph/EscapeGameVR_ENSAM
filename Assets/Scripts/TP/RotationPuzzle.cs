@@ -41,18 +41,20 @@ public class RotationPuzzle : MonoBehaviour
             current[index] = 0;
         }
 
-        // TODO 1 : parcourir toutes les molettes avec une boucle for.
-        //          Astuce : for (int i = 0; i < dials.Length; i++) { ... }
-        //          i vaut 0, puis 1, puis 2... jusqu'au nombre de molettes (dials.Length) non compris.
+        // TODO 1 : on parcourt toutes les molettes
+        for (int i = 0; i < dials.Length; i++)
+        {
+            Debug.Log("Molette " + i + " : " + current[i]);
 
-        // TODO 2 : dans la boucle, si current[i] est différent de solution[i],
-        //          cette molette n'est pas sur le bon symbole : arrêter la fonction.
-        //          Astuce : "différent de" s'écrit !=   ->   if (current[i] != solution[i]) { return; }
-        //          Pour vérifier, vous pouvez afficher la valeur de chaque molette :
-        //          Debug.Log("Molette " + i + " : " + current[i]);
+            // TODO 2 : une molette n'est pas au bon symbole -> on arrête
+            if (current[i] != solution[i])
+            {
+                return;
+            }
+        }
 
-        // TODO 3 : APRÈS la boucle (en dehors des accolades du for) : aucune molette n'a fait return,
-        //          elles sont donc toutes bonnes -> déclencher l'événement onSolved.
-        //          Astuce : onSolved.Invoke();
+        // TODO 3 : aucune molette n'a fait return -> tout est bon
+        Debug.Log("Molettes alignées ! Énigme résolue");
+        onSolved.Invoke();
     }
 }
