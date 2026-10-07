@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -16,6 +17,12 @@ public class KeyLockV2 : MonoBehaviour
     [Header("Quand la clé de la bonne couleur est posée")]
     public UnityEvent onSolved;
 
+    public Transform porte;
+
+    public float vitesseDescente;
+
+    public Vector3 depart;
+    public Vector3 destination;
     // args contient l'objet qui vient d'être posé dans la serrure
     public void OnKeyInserted(SelectEnterEventArgs args)
     {
@@ -32,8 +39,18 @@ public class KeyLockV2 : MonoBehaviour
         } else
         {
             Debug.Log("Vous avez réussi !");
+            StartCoroutine(AnimerMur());
             onSolved.Invoke();
         }
 
+    }
+
+    public IEnumerator AnimerMur()
+    {
+        while (porte.position != destination)
+        {
+            porte.position = Vector3.MoveTowards(porte.position, destination, vitesseDescente * Time.deltaTime);
+            yield return null;
+        }
     }
 }
