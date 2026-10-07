@@ -21,7 +21,7 @@ public class Keypad : MonoBehaviour
     public UnityEvent onSolved;
 
     // Les chiffres tapés par le joueur
-    string typed = "";
+    string typed = "7534";
 
     // key vaut "0" à "9", "C" (effacer) ou "OK" (valider)
     public void PressKey(string key)
@@ -29,10 +29,25 @@ public class Keypad : MonoBehaviour
         Debug.Log("Touche : " + key);
 
         // TODO 1 : si key vaut "C", vider typed.
+        if (key == "C")
+        {
+            typed = "";
+        }
         //          Astuce : on compare deux textes avec ==   ->   if (key == "C") { ... }
         //          Vider un texte : typed = "";
 
         // TODO 2 : sinon, si key vaut "OK", comparer typed avec code :
+        else if (key == "OK")
+        {
+            if (typed == code)
+            {
+                onSolved.Invoke();
+            }
+            else
+            {
+                typed = "";
+            }
+        }
         //          - si c'est le bon code : déclencher l'événement onSolved avec onSolved.Invoke();
         //          - sinon : vider typed (le joueur recommence)
         //          Astuce : pour enchaîner les cas -> if (...) { ... } else if (...) { ... } else { ... }
@@ -40,8 +55,13 @@ public class Keypad : MonoBehaviour
 
         // TODO 3 : sinon (c'est un chiffre), ajouter key à la fin de typed.
         //          Astuce : on colle deux textes avec +   ->   typed = typed + key;
+        else
+        {
+            typed = typed + key;
+        }
 
         // TODO 4 : afficher typed sur l'écran du keypad (APRÈS les if, pour tous les cas).
         //          Astuce : le texte affiché est dans la propriété text   ->   display.text = ...;
+        display.text = typed;
     }
 }
