@@ -303,6 +303,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5f40b73a94b74384922424071993a4d, type: 3}
+--- !u!4 &121162513 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 449963182600533864, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+  m_PrefabInstance: {fileID: 1064905427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &233622211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -962,6 +967,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 121a5abb6831e42b99c9312869671143, type: 3}
   m_PrefabInstance: {fileID: 946641509}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &963356393 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7923903271027626214, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+  m_PrefabInstance: {fileID: 1064905427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1031010315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1027,6 +1037,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2371682534444714033, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1920055859}
+    - target: {fileID: 2371682534444714033, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TurnDial
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371682534444714033, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ByPassScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371682534444714033, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2722436933348634291, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.1154
@@ -1107,14 +1133,50 @@ PrefabInstance:
       propertyPath: onSolved.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4895533911542236163, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1920055859}
+    - target: {fileID: 4895533911542236163, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TurnDial
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895533911542236163, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ByPassScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895533911542236163, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6560533945547384378, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1920055859}
+    - target: {fileID: 6560533945547384378, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TurnDial
+      objectReference: {fileID: 0}
+    - target: {fileID: 6560533945547384378, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ByPassScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6560533945547384378, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7247630737099318929, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
       propertyPath: m_Name
       value: ByPass
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4431104768319434271, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7247630737099318929, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1920055859}
     - targetCorrespondingSourceObject: {fileID: 4593666138971391717, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -1803,6 +1865,50 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 753140928}
   m_SourcePrefab: {fileID: 100100000, guid: 049c02f7e5e8045adab643a5b3964ee3, type: 3}
+--- !u!1 &1920055856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7247630737099318929, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+  m_PrefabInstance: {fileID: 1064905427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1920055859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920055856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b65e0f6b56f0f42acf12000eb69323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ByPassScript
+  dials:
+  - {fileID: 121162513}
+  - {fileID: 963356393}
+  - {fileID: 1964267633}
+  symbolCount: 4
+  solution: 030000000300000001000000
+  solution2: 030000000100000001000000
+  onSolved:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 753140928}
+        m_TargetAssemblyTypeName: OpenDoor_Invoke, Assembly-CSharp
+        m_MethodName: bougerPorte
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &1964267633 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3686151107864497254, guid: 2312b7406ea499945b858fa6e67cfb56, type: 3}
+  m_PrefabInstance: {fileID: 1064905427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2128645880
 PrefabInstance:
   m_ObjectHideFlags: 0

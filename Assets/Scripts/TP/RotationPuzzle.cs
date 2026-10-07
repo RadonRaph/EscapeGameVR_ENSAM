@@ -19,6 +19,7 @@ public class RotationPuzzle : MonoBehaviour
     [Tooltip("Symbole attendu pour chaque molette (0 = A, 1 = B, 2 = C, 3 = D)")]
     public int[] solution = { 1, 3, 2 };
 
+
     [Header("Quand les molettes sont bien alignées")]
     public UnityEvent onSolved;
 

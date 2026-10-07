@@ -17,7 +17,9 @@ public class ByPassScript : MonoBehaviour
     public int symbolCount = 4;
 
     [Tooltip("Symbole attendu pour chaque molette (0 = A, 1 = B, 2 = C, 3 = D)")]
-    public int[] solution = { 1, 3, 2 };
+    public int[] solution = { 3, 3, 1 };
+    public int[] solution2 = { 3, 1, 1 };
+
 
     [Header("Quand les molettes sont bien alignées")]
     public UnityEvent onSolved;
@@ -43,11 +45,13 @@ public class ByPassScript : MonoBehaviour
 
         for (int i = 0; i < dials.Length; i++)
         {
+
             if (current[i] != solution[i])
             {
                 Debug.Log("Molette " + i + " : " + current[i]);
                 return;
             }
+
         }
         onSolved.Invoke();
 
