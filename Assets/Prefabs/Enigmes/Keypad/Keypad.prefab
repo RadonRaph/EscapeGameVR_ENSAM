@@ -4932,9 +4932,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Keypad
   code: 1234
   display: {fileID: 8862828209249498797}
+  wrongMessage: CHERCHE ENCORE
   onSolved:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7794808922544647678, guid: 426ffec4ba3327345b0b1d5d3150c189, type: 3}
+        m_TargetAssemblyTypeName: SoundPlayer, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7138999300200393157
 GameObject:
   m_ObjectHideFlags: 0

@@ -1055,7 +1055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9cd92203520c74fc1895b6bd8f39faed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.77
+      value: -9.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9cd92203520c74fc1895b6bd8f39faed, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1635,6 +1635,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 405390667013171329, guid: 11d8dab6ed06641f3bd9e3f6ee2b3aa7, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2099465903}
+    - target: {fileID: 405390667013171329, guid: 11d8dab6ed06641f3bd9e3f6ee2b3aa7, type: 3}
       propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
@@ -1647,16 +1651,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 405390667013171329, guid: 11d8dab6ed06641f3bd9e3f6ee2b3aa7, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 405390667013171329, guid: 11d8dab6ed06641f3bd9e3f6ee2b3aa7, type: 3}
       propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 405390667013171329, guid: 11d8dab6ed06641f3bd9e3f6ee2b3aa7, type: 3}
       propertyPath: m_FirstHoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 625791953}
+      objectReference: {fileID: 881115608}
     - target: {fileID: 405390667013171329, guid: 11d8dab6ed06641f3bd9e3f6ee2b3aa7, type: 3}
       propertyPath: m_FirstHoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 405390667013171329, guid: 11d8dab6ed06641f3bd9e3f6ee2b3aa7, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SilhouetteOutline.URPOutline, SilhouetteOutline
+      objectReference: {fileID: 0}
+    - target: {fileID: 405390667013171329, guid: 11d8dab6ed06641f3bd9e3f6ee2b3aa7, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1479348484141577047, guid: 11d8dab6ed06641f3bd9e3f6ee2b3aa7, type: 3}
       propertyPath: m_Name
@@ -1746,11 +1762,6 @@ PrefabInstance:
 --- !u!4 &625791952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3446116583205915083, guid: 11d8dab6ed06641f3bd9e3f6ee2b3aa7, type: 3}
-  m_PrefabInstance: {fileID: 625791951}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &625791953 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8215513049469793425, guid: 11d8dab6ed06641f3bd9e3f6ee2b3aa7, type: 3}
   m_PrefabInstance: {fileID: 625791951}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &674126150
@@ -2367,7 +2378,7 @@ GameObject:
   - component: {fileID: 881115611}
   - component: {fileID: 881115610}
   m_Layer: 0
-  m_Name: bouton
+  m_Name: boutonvert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2412,7 +2423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Appuie 3 fois sur le bouton vert cach\xE9, bonne chance!!"
+  m_text: "Appuie 3 fois sur le bouton cach\xE9, bonne chance!!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3350,7 +3361,7 @@ GameObject:
   - component: {fileID: 1193542447}
   - component: {fileID: 1193542446}
   m_Layer: 0
-  m_Name: socle
+  m_Name: soclevert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5753,7 +5764,7 @@ MonoBehaviour:
   version: 2
   globalVolume: 0
   mode: 1
-  size: {x: 19.83, y: 6.25, z: 30.897}
+  size: {x: 19.83, y: 6.25, z: 30.897003}
   overrideRendererFilters: 0
   minRendererVolumeSize: 0.1
   objectLayerMask:
@@ -6293,6 +6304,17 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2099465903 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7884480942306165908, guid: 11d8dab6ed06641f3bd9e3f6ee2b3aa7, type: 3}
+  m_PrefabInstance: {fileID: 625791951}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e06c7e0e1d478188d7ef363d4c2085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SilhouetteOutline::SilhouetteOutline.URPOutline
 --- !u!4 &2109825516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7833b8724028f410fa7eb238fb169a45, type: 3}

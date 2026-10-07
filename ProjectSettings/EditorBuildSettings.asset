@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/EscapeGame_TP.unity
     guid: 212ce7ab4e10a45e2990b75a14cdd0fb
   - enabled: 1
-    path: Assets/Scenes/EscapeGame_Exemple.unity
+    path: Assets/Scenes/EscapeGame2.unity
     guid: 91c8e1d642bc84cebbc08a8f2efbf7df
   - enabled: 1
     path: Assets/Scenes/EscapeGame_Enigmes.unity
