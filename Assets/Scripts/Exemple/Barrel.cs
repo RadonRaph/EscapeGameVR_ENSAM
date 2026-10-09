@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Barrel : MonoBehaviour
 {
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void gauche()
     {
@@ -14,4 +15,5 @@ public class Barrel : MonoBehaviour
         Debug.Log(transform.position);
 
     }
+    
 }
