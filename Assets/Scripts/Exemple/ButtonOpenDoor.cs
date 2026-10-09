@@ -7,10 +7,11 @@ public class ButtonOpenDoor : MonoBehaviour
     public void verification()
     {
         float distance = Vector3.Distance(transform.position, positionCible);
-        if (distance < 0.1f)
+        if (distance < 0.5f)
         {
-
-            transform.Translate(0f, 1.8f, 0f, Space.World);
+            Debug.Log("Énigme résolue !");
+            //onSolved.Invoke();
+            //transform.Translate(0f, 1.8f, 0f, Space.World);
         }
     }
 }

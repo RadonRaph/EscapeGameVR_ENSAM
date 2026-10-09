@@ -34,7 +34,7 @@ public class SimpleButtonPuzzle : MonoBehaviour
         Debug.Log("Bouton appuyé " + presses + " fois");
 
         // == compare deux valeurs (un seul = sert à donner une valeur)
-        if (presses == pressesNeeded)
+        if (presses > pressesNeeded)
         {
             Debug.Log("Énigme résolue !");
 

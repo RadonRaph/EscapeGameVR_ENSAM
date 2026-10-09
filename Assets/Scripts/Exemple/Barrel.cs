@@ -11,9 +11,9 @@ public class Barrel : MonoBehaviour
     }
     public void droite()
     {
-        transform.Translate(0f, 0f, 0.25f, Space.World);
+        transform.Translate(0f, 0f, -0.25f, Space.World);
         Debug.Log(transform.position);
-
+        
     }
     
 }
