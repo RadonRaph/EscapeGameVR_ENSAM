@@ -5,11 +5,11 @@ OcclusionCullingSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_OcclusionBakeSettings:
-    smallestOccluder: 5
+    smallestOccluder: 2
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 212ce7ab4e10a45e2990b75a14cdd0fb
+  m_OcclusionCullingData: {fileID: 36300000, guid: 9fc21cb10f3cab64ca65ea32571974df, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -174,6 +174,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 025cae029f2ad4854b26427540c9ec41, type: 3}
       propertyPath: m_Name
       value: wall-corner (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 025cae029f2ad4854b26427540c9ec41, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1241,6 +1245,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: corridor
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ad67a91c46a642a5abbbd9dd18d119b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1283,7 +1291,7 @@ MonoBehaviour:
   version: 2
   globalVolume: 0
   mode: 1
-  size: {x: 28.843039, y: 5.516267, z: 28.4451}
+  size: {x: 29.865803, y: 5.741161, z: 30.974224}
   overrideRendererFilters: 0
   minRendererVolumeSize: 0.1
   objectLayerMask:
@@ -1321,7 +1329,7 @@ Transform:
   m_GameObject: {fileID: 215856110}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.645719, y: 1.2581334, z: -7.4467497}
+  m_LocalPosition: {x: 8.157101, y: 1.3057144, z: -8.711311}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1973,6 +1981,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6595591f8a6e94d3ea09571ce343f6ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2092,6 +2104,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
       propertyPath: m_Name
       value: template-detail (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2354,6 +2370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: room-corner
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a3486a1496a75ed40b0d8f64a9a44f46, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2419,6 +2439,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 896bfbeeb5c324349a53eef9be5a4378, type: 3}
       propertyPath: m_Name
       value: template-wall-half
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 896bfbeeb5c324349a53eef9be5a4378, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2653,6 +2677,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
       propertyPath: m_Name
       value: template-detail (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3389,6 +3417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: room-corner
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6246eba55f6ba49fb8234b7e9e147c3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3455,6 +3487,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall-corner
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 025cae029f2ad4854b26427540c9ec41, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3520,6 +3556,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6595591f8a6e94d3ea09571ce343f6ed, type: 3}
       propertyPath: m_Name
       value: wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6595591f8a6e94d3ea09571ce343f6ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3696,6 +3736,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
       propertyPath: m_Name
       value: template-detail
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4339,6 +4383,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: detail-barrel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: eec644135b305334294a7940de915602, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4478,6 +4526,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 02f73c6e2dedca44da24ac0fb8865e08, type: 3}
       propertyPath: m_Name
       value: pulley
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 02f73c6e2dedca44da24ac0fb8865e08, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4674,7 +4726,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1767192433, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1479610494}
   m_SourcePrefab: {fileID: 100100000, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
 --- !u!1 &1101728688
 GameObject:
@@ -6286,6 +6341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: template-wall-detail-a
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2f51c87f7632841d2a4a0980a691a29e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6347,6 +6406,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4b1ab0c76399745fbbdf14db779b2da9, type: 3}
       propertyPath: m_Name
       value: wall-door-wide
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4b1ab0c76399745fbbdf14db779b2da9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6958,6 +7021,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
       propertyPath: m_Name
       value: template-detail (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9466,6 +9533,55 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.9999999, y: 4.1820188, z: 0.9999999}
   m_Center: {x: 0, y: 1.5910094, z: 0}
+--- !u!1 &1479610489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1767192433, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 1067804665}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1479610494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479610489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &1488297066
 GameObject:
   m_ObjectHideFlags: 0
@@ -10593,6 +10709,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6595591f8a6e94d3ea09571ce343f6ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11231,6 +11351,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ef443d9d591d845af85f2668d7d07854, type: 3}
       propertyPath: m_Name
       value: cabinetTelevision
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ef443d9d591d845af85f2668d7d07854, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13528,6 +13652,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: template-detail (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13811,6 +13939,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
       propertyPath: m_Name
       value: template-detail (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14320,6 +14452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: barrels
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c9e33a61f994a8740a9a5df81db637f5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14381,6 +14517,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d07bd92bd5d283b4b8cd101f3b39a111, type: 3}
       propertyPath: m_Name
       value: ladder
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d07bd92bd5d283b4b8cd101f3b39a111, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14447,6 +14587,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
       propertyPath: m_Name
       value: template-detail (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14521,6 +14665,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: de331671f458a4a4e8d5bd00519f3e54, type: 3}
       propertyPath: m_Name
       value: gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de331671f458a4a4e8d5bd00519f3e54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14662,6 +14810,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: template-detail (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d246e59089acb7f49ad2cbb06a07c672, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14736,6 +14888,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: template-wall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7833b8724028f410fa7eb238fb169a45, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14801,6 +14957,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6595591f8a6e94d3ea09571ce343f6ed, type: 3}
       propertyPath: m_Name
       value: wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6595591f8a6e94d3ea09571ce343f6ed, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
