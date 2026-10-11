@@ -9,9 +9,16 @@ using UnityEngine.Events;
 /// </summary>
 public class ByPassScript : MonoBehaviour
 {
+    [SerializeField] private GameObject monObjet1;
+    [SerializeField] private GameObject monObjet2;
+    [SerializeField] private GameObject monObjet3;
     [Header("Molettes")]
     [Tooltip("Les molettes, de gauche à droite")]
     public Transform[] dials;
+    [Tooltip("Le nouveau matériau ")]
+    public Material nouveauMateriau;
+    public Material Rouge;
+
 
     [Tooltip("Nombre de symboles sur chaque molette")]
     public int symbolCount = 4;
@@ -35,6 +42,10 @@ public class ByPassScript : MonoBehaviour
     // index = numéro de la molette qui a été appuyée (0 = celle de gauche)
     public void TurnDial(int index)
     {
+        MeshRenderer[] renderers1 = monObjet1.GetComponentsInChildren<MeshRenderer>();
+        MeshRenderer[] renderers2 = monObjet2.GetComponentsInChildren<MeshRenderer>();
+        MeshRenderer[] renderers3 = monObjet3.GetComponentsInChildren<MeshRenderer>();
+
         // Tourner la molette d'un cran (déjà écrit)
         dials[index].Rotate(0f, 0f, -360f / symbolCount);
         current[index] = current[index] + 1;
@@ -42,6 +53,25 @@ public class ByPassScript : MonoBehaviour
         {
             current[index] = 0;
         }
+
+        foreach (MeshRenderer r in renderers1)
+        {
+            if (current[0] == solution[0]) { r.material = nouveauMateriau; }
+            else { r.material = Rouge; }
+        }
+
+        foreach (MeshRenderer r in renderers2)
+        {
+            if (current[1] == solution[1]) { r.material = nouveauMateriau; }
+            else { r.material = Rouge; }
+        }
+
+        foreach (MeshRenderer r in renderers3)
+        {
+            if (current[2] == solution[2]) { r.material = nouveauMateriau;Debug.Log("BLEU"); }
+            else { r.material = Rouge; }
+        }
+
 
         for (int i = 0; i < dials.Length; i++)
         {
