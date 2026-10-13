@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -16,6 +17,8 @@ public class KeyLockV2 : MonoBehaviour
     [Header("Quand la clé de la bonne couleur est posée")]
     public UnityEvent onSolved;
 
+    public TextMeshProUGUI textIndice;
+
     // args contient l'objet qui vient d'être posé dans la serrure
     public void OnKeyInserted(SelectEnterEventArgs args)
     {
@@ -28,10 +31,20 @@ public class KeyLockV2 : MonoBehaviour
         if (couleurCle.sharedMaterial != materiauAttendu)
         {
             Debug.Log("Ce n'est pas la clé n'est pas de la bonne couleur");
+            if (textIndice != null)
+            {
+                textIndice.text = "La clé n'est pas de la bonne couleur !";
+                textIndice.color = Color.red;
+            }
             return;
         } else
         {
             Debug.Log("Vous avez réussi !");
+            if (textIndice != null)
+            {
+                textIndice.text = "Succès !";
+                textIndice.color = Color.green;
+            }
             onSolved.Invoke();
         }
 
