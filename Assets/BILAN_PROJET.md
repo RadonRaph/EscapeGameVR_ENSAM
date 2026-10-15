@@ -63,6 +63,10 @@ Les lightmaps mémorisent l’éclairage du décor fixe. Les Adaptive
 Probe Volumes fournissent l’éclairage aux objets mobiles, notamment
 aux clés. Leur éclairage change selon la salle traversée.
 
+Une nouvelle Skybox spatiale a également été ajoutée afin de renforcer
+l’ambiance de la station et de donner l’impression d’évoluer dans
+l’espace.
+
 Une lampe visible et un Spot Light éclairent la plateforme de sortie.
 
 Les voyants utilisent des matériaux URP/Lit émissifs. Les étincelles
@@ -81,7 +85,7 @@ Voici le travail réalisé dans ma scène `EscapeGame_TP1`.
 | Lighting baked : lightmaps + APV | 1,5 | J’ai calculé les lightmaps et les Adaptive Probe Volumes. Les clés reçoivent l’éclairage des salles. Quelques réglages du décor restent à finaliser. |
 | Vidéo du parcours depuis le Quest 3 | 1 | À réaliser. |
 | Bonus : deuxième prefab ou nouveau mécanisme | 2 | J’ai également complété Keypad.cs et créé un levier qui débloque les touches du terminal. |
-| Bonus : matériaux / VFX | 2 | Matériaux colorés, voyants émissifs et étincelles déclenchées par le levier. Le vert s’éteint et le rouge s’allume après activation. |
+| Bonus : matériaux / VFX | 2 | Matériaux colorés, voyants émissifs, étincelles déclenchées par le levier et ajout d’une Skybox spatiale pour renforcer l’ambiance visuelle de la station. |
 | Bonus : idée pertinente / originalité | 2 | J’ai personnalisé la progression : trouver la clé, réactiver le terminal avec le levier, puis découvrir le code de sortie. |
 | Bonus : animation de feedback | 1 | La bonne clé déclenche une animation avec Animator : les barreaux pivotent lentement pendant environ 2,5 secondes et restent ouverts. |
 | Bonus : fin de partie | 1 | Le bon code ouvre la sortie et affiche un message de victoire. |
