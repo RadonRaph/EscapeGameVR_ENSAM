@@ -8,14 +8,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EscapeGame_TP.unity
     guid: 212ce7ab4e10a45e2990b75a14cdd0fb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EscapeGame_Exemple.unity
     guid: 91c8e1d642bc84cebbc08a8f2efbf7df
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EscapeGame_Enigmes.unity
     guid: dc20710d8a8b944c1a1eb8aa1976894f
+  - enabled: 1
+    path: Assets/Scenes/Escape_TP.unity
+    guid: baf260ab47a4c3348ae3340b3d1cf0d7
+  - enabled: 1
+    path: Assets/Scenes/Bar_Jackson.unity
+    guid: 87f16daf73627b34fa9067bb91074004
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 4331d1158b30247678439d87bae8d27e, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 718763c600a5c4936a73145a636a8d8a, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 839839c9fae11a94a8a29857a6078cbc, type: 2}
   m_UseUCBPForAssetBundles: 0
