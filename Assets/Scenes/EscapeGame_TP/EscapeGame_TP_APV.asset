@@ -26,13 +26,13 @@ MonoBehaviour:
   settings:
     m_Version: 1
     dilationSettings:
-      enableDilation: 0
-      dilationDistance: 0
-      dilationValidityThreshold: 0
-      dilationIterations: 0
+      enableDilation: 1
+      dilationDistance: 0.5
+      dilationValidityThreshold: 0.050000012
+      dilationIterations: 1
       squaredDistWeighting: 0
     virtualOffsetSettings:
-      useVirtualOffset: 0
+      useVirtualOffset: 1
       validityThreshold: 0.25
       outOfGeoOffset: 0
       searchMultiplier: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   freezePlacement: 0
   probeOffset: {x: 0, y: 0, z: 0}
   simplificationLevels: 3
-  minDistanceBetweenProbes: 1
+  minDistanceBetweenProbes: 0.5
   renderersLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
