@@ -1,5 +1,7 @@
 # Bilan du projet — Escape Game VR
 
+
+
 ## Présentation
 
 Le projet a été développé à partir de la scène d’exemple fournie,
@@ -8,6 +10,12 @@ adaptée dans `Assets/Scenes/EscapeGame_TP1.unity`.
 Le parcours comprend deux ambiances : un donjon puis une station
 spatiale. Le joueur doit résoudre des énigmes et réactiver un terminal
 pour accéder à la sortie.
+
+## Vidéo de démonstration
+
+Une vidéo du parcours complet en VR est disponible ici :
+
+[Voir la vidéo sur Google Drive](https://drive.google.com/drive/folders/1FHhwr9WhHHh_4-fZdwm1YagHbcCT_uff?usp=sharing)
 
 ## Parcours du joueur
 
