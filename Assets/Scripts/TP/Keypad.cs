@@ -12,7 +12,7 @@ public class Keypad : MonoBehaviour
 {
     [Header("Keypad")]
     [Tooltip("Le code à trouver")]
-    public string code = "1234";
+    public string code = "7543";
 
     [Tooltip("Texte qui affiche les chiffres tapés")]
     public TMP_Text display;
@@ -21,7 +21,7 @@ public class Keypad : MonoBehaviour
     public UnityEvent onSolved;
 
     // Les chiffres tapés par le joueur
-    string typed = "7534";
+    string typed = "";
 
     // key vaut "0" à "9", "C" (effacer) ou "OK" (valider)
     public void PressKey(string key)
