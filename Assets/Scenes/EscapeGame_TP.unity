@@ -1443,20 +1443,20 @@ MonoBehaviour:
     e00: 1
     e01: 0
     e02: 0
-    e03: -6.137099
+    e03: -8.157102
     e10: 0
     e11: 1
     e12: 0
-    e13: -1.3057142
+    e13: -1.3057144
     e20: 0
     e21: 0
     e22: 1
-    e23: 12.407592
+    e23: 8.711311
     e30: 0
     e31: 0
     e32: 0
     e33: 1
-  cachedHashCode: 1796438847
+  cachedHashCode: -1167860872
   fillEmptySpaces: 0
 --- !u!4 &215856112
 Transform:
@@ -2340,12 +2340,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201450052}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66e06c7e0e1d478188d7ef363d4c2085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SilhouetteOutline::SilhouetteOutline.URPOutline
-  _color: {r: 1, g: 1, b: 1, a: 1}
+  _color: {r: 0.06931448, g: 1, b: 0, a: 1}
   _width: 4
   _includeChildren: 1
 --- !u!114 &370613070
