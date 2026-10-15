@@ -20,6 +20,10 @@ public class SimpleButtonPuzzle : MonoBehaviour
     [Header("Quand l'énigme est résolue")]
     public UnityEvent onSolved;
 
+    // Le feu d'artifice à lancer quand l'énigme est résolue (à glisser dans l'Inspector).
+    [Header("Fin du jeu")]
+    [SerializeField] private FireworksFinale finale;
+
     // Pas "public" : une variable interne au script, invisible dans l'Inspector.
     int presses = 0;
 
@@ -40,6 +44,12 @@ public class SimpleButtonPuzzle : MonoBehaviour
 
             // Déclenche toutes les actions réglées dans On Solved (ici : cacher la grille)
             onSolved.Invoke();
+
+            // Lance le feu d'artifice (le "if" évite une erreur si le champ est vide)
+            if (finale != null)
+            {
+                finale.PlayFinale();
+            }
         }
     }
 }
